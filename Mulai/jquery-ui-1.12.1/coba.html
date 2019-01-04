@@ -1,0 +1,158 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Default functionality</title>
+  <link rel="stylesheet" href="jquery-ui.css">
+  <link rel="stylesheet" href="../style.css">
+  <script src="external/jquery/jquery.js"></script>
+  <script src="jquery-ui.js"></script>
+  </head>
+  <footer>
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: auto; background:none; border:none; }
+  #sortable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; background:none; border:none; }
+  html>body #sortable li { height: auto; background:none; border:none}
+  .ui-state-highlight { height: auto; background:none; border:none; }
+ <style>
+  body {
+    min-width: 520px;
+	background:none;
+	border:none;
+  }
+  .column {
+    width:300px;
+    float: left;
+    padding-bottom: 5px;
+	border:none;
+  }
+  .portlet {
+    margin: 0 1em 1em 0;
+    padding: 0.3em;
+	background:none;
+	border:none;
+  }
+  .portlet-header {
+    padding: 0.2em 0.3em;
+    margin-bottom: 0.5em;
+    position:relative;
+  }
+  .portlet-toggle {
+    position:relative;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+  }
+  .portlet-content {
+    padding: 0.4em;
+	width:300px;
+	height:auto;
+	background:none;
+	border:none;
+  }
+  .portlet-placeholder {
+    border:none;
+    margin: 0 1em 1em 0;
+    height: 80px;
+	border:none;
+  }
+  </style>
+ 
+ 
+  <script>
+  $( function() {
+    $( ".column" ).sortable({
+      connectWith: ".column",
+      handle: ".portlet-header",
+      cancel: ".portlet-toggle",
+      placeholder: "portlet-placeholder ui-corner-all"
+    });
+ 
+    $( ".portlet" )
+      .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+      .find( ".portlet-header" )
+        .addClass( "ui-widget-header ui-corner-all" )
+        .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+ 
+    $( ".portlet-toggle" ).on( "click", function() {
+      var icon = $( this );
+      icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
+      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
+    });
+  } );
+  </script>
+  
+  <style>
+                .toggler { width: 500px; height: 200px; position: relative; }
+                #button { padding: .5em 1em; text-decoration: none; }
+                #effect { width: 240px;  padding: 1em; color: #333; }
+                .newClass { text-indent: 40px; letter-spacing: .4em; width: 410px; height: 120px; padding: 30px; margin: 10px; font-size: 1.1em; }
+            </style>
+          
+          <script>
+              $( function() {
+                $( "#button" ).on( "click", function() {
+                  $( "#effect" ).addClass( "newClass", 1000, callback );
+                });
+             
+                function callback() {
+                  setTimeout(function() {
+                    $( "#effect" ).removeClass( "newClass" );
+                  }, 1500 );
+                }
+              } );
+          </script>
+ 
+<div class="column">
+ 
+  <div class="portlet">
+    <div class="portlet-header">Help and Support</div>
+    	<br>
+        <br>
+        <br>
+        <div class="portlet-content">
+        	Untuk mendapatkan petunjuk atau dukungan dari kami, 
+            kunjungi situs <a href="Halaman.html">support.history.com</a> dan submit form anda. 
+        </div>
+    </div>
+   </div>
+</div>
+ 
+<div class="column"> 
+  <div class="portlet">
+    <div class="portlet-header">Contact Us</div>
+   		<br>
+        <br>
+        <br>
+        <div class="portlet-content">
+   		Jl. Widororejo
+        <br> Kartasuro, Sukoharjo 66666 Jawa Tengah
+        <br> (+6231) 5556667
+    	</div>
+  	</div>
+  </div>
+</div>
+ 
+<div class="column">
+  <div class="portlet">
+  	<div class="toggler">
+       <div id="effect" class="ui-corner-all">
+    		<div class="portlet-header">Find Us</div>
+            <br>
+            <br>
+            <br>
+    	<div class="portlet-content">
+            <a href="http://facebook.com/directnewsaccess">Facebook</a>
+            <br> 
+            <a href="http://twitter.com/directnewsaccess">Twitter</a>
+        </div>
+  	   </div>
+ 	</div>
+  </div>
+        <button id="button" class="ui-state-default ui-corner-all">Run Effect</button>
+</div>
+
+</footer>
+ 
+</html>
